@@ -1,8 +1,6 @@
 package com.arwest.msscbrewery.web.controller;
 
-import com.arwest.msscbrewery.services.BeerService;
 import com.arwest.msscbrewery.services.CustomerService;
-import com.arwest.msscbrewery.web.model.BeerDto;
 import com.arwest.msscbrewery.web.model.CustomerDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,20 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/v1/beer")
-public class BeerController {
+@RequestMapping("/api/v1/customer")
+public class CustomerController {
 
-    private final BeerService beerService;
+    private final CustomerService customerService;
 
-    public BeerController(BeerService beerService, CustomerService customerService) {
-        this.beerService = beerService;
+    public CustomerController(CustomerService customerService) {
+        this.customerService = customerService;
     }
 
-    @GetMapping("/{beerId}")
-    public ResponseEntity<BeerDto>getBeer(@PathVariable UUID beerId){
+    @GetMapping("/{customerId}")
+    public ResponseEntity<CustomerDto> getCustomer(@PathVariable UUID customerId){
 
-        return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
+        return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatus.OK);
     }
-
-
 }

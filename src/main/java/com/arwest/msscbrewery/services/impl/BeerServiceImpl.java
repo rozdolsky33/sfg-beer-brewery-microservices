@@ -1,5 +1,6 @@
-package com.arwest.msscbrewery.services;
+package com.arwest.msscbrewery.services.impl;
 
+import com.arwest.msscbrewery.services.BeerService;
 import com.arwest.msscbrewery.web.model.BeerDto;
 import org.springframework.stereotype.Service;
 
