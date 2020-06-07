@@ -25,7 +25,7 @@ public class BeerServiceImpl implements BeerService {
 
     @Override
     public void updateBeer(String beerId, BeerDto beerDto) {
-        //TODO: impl -  would add a real impl to update
+
     }
 
     @Override
