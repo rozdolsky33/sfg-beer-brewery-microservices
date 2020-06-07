@@ -26,8 +26,8 @@ public class BeerDto {
     @Positive
     private Long upc;
 
-    //good type for public interfacing
     private OffsetDateTime createdDate;
     private OffsetDateTime lastUpdatedDate;
+
 
 }

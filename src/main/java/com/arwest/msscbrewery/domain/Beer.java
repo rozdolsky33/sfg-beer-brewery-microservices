@@ -21,7 +21,7 @@ public class Beer {
     private Long upc;
 
     //good for Db
-    private Timestamp createDate;
+    private Timestamp createdDate;
     private Timestamp lastUpdatedDate;
 
 }
