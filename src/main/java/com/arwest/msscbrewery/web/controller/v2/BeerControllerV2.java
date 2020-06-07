@@ -2,31 +2,27 @@ package com.arwest.msscbrewery.web.controller.v2;
 
 import com.arwest.msscbrewery.services.v2.BeerServiceV2;
 import com.arwest.msscbrewery.web.model.v2.BeerDtoV2;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.ConstraintViolationException;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
+@Slf4j
 @Validated
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/api/v2/beer")
 public class BeerControllerV2 {
 
     private final BeerServiceV2 beerServiceV2;
-
-
-    public BeerControllerV2(BeerServiceV2 beerServiceV2) {
-        this.beerServiceV2 = beerServiceV2;
-    }
-
 
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDtoV2> getBeer(@NotNull @PathVariable UUID beerId){
@@ -35,9 +31,9 @@ public class BeerControllerV2 {
 
     @PostMapping
     public ResponseEntity handlePost(@Valid @NotNull @RequestBody BeerDtoV2 beerDto){
-        BeerDtoV2 saveDtoV2 = beerServiceV2.saveNewBeer(beerDto);
-
-        HttpHeaders headers = new HttpHeaders();
+        val saveDtoV2 = beerServiceV2.saveNewBeer(beerDto);
+        log.debug("handle post...");
+        val headers = new HttpHeaders();
         //TODO: add hostname url
         headers.add("Location", "/api/v1/beer" + saveDtoV2.getId().toString());
 

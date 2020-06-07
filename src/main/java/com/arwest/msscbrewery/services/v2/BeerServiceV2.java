@@ -1,6 +1,8 @@
 package com.arwest.msscbrewery.services.v2;
 
 import com.arwest.msscbrewery.web.model.v2.BeerDtoV2;
+
+import javax.validation.Valid;
 import java.util.UUID;
 
 public interface BeerServiceV2 {
